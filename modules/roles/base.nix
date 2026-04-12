@@ -1,14 +1,24 @@
 # This file defines default configurations for ALL hosts
-{ modules, pkgs, ... }: {
+{ modules, inputs, pkgs, ... }: {
 
-  imports = [];
+  imports = [
+    inputs.home-manager.nixosModules.default
+    inputs.agenix.nixosModules.default
+    modules.features.vim
+  ];
+
+  # Default text editor
+  environment.variables.EDITOR = "vim";
 
   # Included packages
-  environment.systemPackages = with pkgs; [
-    git
-    vim
-    tree
+  environment.systemPackages = [
+    inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
+    pkgs.git
+    pkgs.tree
   ];
+
+  # Unfree pakages
+  nixpkgs.config.allowUnfree = true;
 
   # Locale
   time.timeZone = "America/Boise";
@@ -18,13 +28,17 @@
   networking.networkmanager.enable = true;
 
   # UEFI bootloader
-  boot.loader = {
-    grub = {
-      enable = true;
-      device = "nodev";
-      efiSupport = true;
-    };
-    efi.canTouchEfiVariables = true;
+  boot.loader.grub = {
+    enable = true;
+    device = "nodev";
+    efiSupport = true;
+    efiInstallAsRemovable = true;
+  };
+
+  # Open SSH
+  services.openssh = {
+    enable = true;
+    settings.PermitRootLogin = "prohibit-password";
   };
 
   # NixOS version

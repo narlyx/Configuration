@@ -6,9 +6,14 @@
     # Package repositories
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # Flake utilities
-    haumea.url = "github:nix-community/haumea/v0.2.2";
+    # Utilities
+    haumea.url = "github:nix-community/haumea";
     agenix.url = "github:ryantm/agenix";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
   };
 
@@ -38,14 +43,9 @@
         # Host configuration files
         ./hosts/${name}/default.nix
 
-        # Secrets
-        inputs.agenix.nixosModules.default
-        ({ pkgs, ... }: {
-          environment.systemPackages = [
-            inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
-          ];
-        })
-        
+        # Universal configuration
+        modules.roles.base
+
       ];
     };
 
