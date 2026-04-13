@@ -13,6 +13,7 @@
     extraGroups = [
       "wheel" # Sudo
       "networkmanager" # Networking
+      "vboxusers" # Virtualbox
     ];
   };
 
