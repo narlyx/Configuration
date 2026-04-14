@@ -10,6 +10,7 @@
     home.packages = with pkgs; [
       onlyoffice-desktopeditors
       thunderbird
+      joplin-desktop
       nextcloud-client
       gradia
       bitwarden-desktop
