@@ -3,6 +3,7 @@
   imports = [
     modules.features.narlyx.zsh
     modules.features.narlyx.git
+    modules.features.narlyx.emacs
     modules.secrets.narlyx-ssh
     modules.secrets.narlyx-password
   ];
