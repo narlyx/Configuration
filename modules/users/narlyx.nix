@@ -4,12 +4,14 @@
     modules.features.narlyx.zsh
     modules.features.narlyx.git
     modules.secrets.narlyx-ssh
+    modules.secrets.narlyx-password
   ];
 
   # System user
   users.users.narlyx = {
+    description = "Narlyx";
     isNormalUser = true;
-    initialPassword = "changeme";
+    hashedPasswordFile = config.age.secrets.narlyx-password.path;
     extraGroups = [
       "wheel" # Sudo
       "networkmanager" # Networking

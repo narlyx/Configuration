@@ -4,4 +4,5 @@ let
   juuzuo-host = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKXwQ+0SXFaqH3maziIlOvF5UiVjgIDMu/9AVVTNDH99";
 in {
   "narlyx-ssh.age".publicKeys = [ narlyx-user juno-host juuzuo-host ];
+  "narlyx-password.age".publicKeys = [ narlyx-user juno-host juuzuo-host ];
 }
