@@ -88,6 +88,7 @@
     appindicator
     caffeine
     mpris-label
+    rounded-corners
   ];
 
 }

@@ -25,7 +25,7 @@
           enabled-extensions = with pkgs.gnomeExtensions; [
             blur-my-shell.extensionUuid
             appindicator.extensionUuid
-            panel-corners.extensionUuid
+            rounded-corners.extensionUuid
             caffeine.extensionUuid
             mpris-label.extensionUuid
           ];
