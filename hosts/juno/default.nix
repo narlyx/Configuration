@@ -7,8 +7,13 @@
     modules.features.virtualisation
   ];
 
-  environment.systemPackages = with pkgs; [
+  home-manager.users.narlyx.home.packages = with pkgs; [
     zellij
+
+    inkscape
+    glabels-qt
+    gimp
+    font-manager
   ];
 
 }
