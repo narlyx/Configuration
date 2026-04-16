@@ -13,8 +13,8 @@
         evil
         good-scroll
         nerd-icons
-        kanagawa-themes
         doom-modeline
+        doom-themes
 
         # Modes
         nix-mode
@@ -40,7 +40,7 @@
         (setq-default indent-tabs-mode nil)
         (setq-default tab-width 2)
         (setq-default standard-indent 2)
-        (load-theme 'kanagawa-wave t)
+        (load-theme 'doom-one t)
 
         ;; ### PLUGINS ###
 
@@ -49,14 +49,14 @@
         (require 'evil)
         (evil-mode 1)
 
-        ;; Nerd icons
-        (require 'nerd-icons)
-
         ;; Doom modeline
         (require 'doom-modeline)
         (doom-modeline-mode 1)
         (setq doom-modeline-height 35)
         (setq doom-modeline-buffer-file-name-stule 'auto)
+
+        ;; Nerd icons
+        (require 'nerd-icons)
 
         ;; Good scrolling
         (require 'good-scroll)
