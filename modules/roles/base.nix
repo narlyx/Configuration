@@ -5,6 +5,7 @@
     inputs.home-manager.nixosModules.default
     inputs.agenix.nixosModules.default
     modules.features.vim
+    modules.users.root
   ];
 
   # Default text editor
