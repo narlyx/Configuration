@@ -1,5 +1,5 @@
 # This file defines default configurations for ALL hosts
-{ modules, inputs, pkgs, ... }: {
+{ modules, inputs, pkgs, lib, ... }: {
 
   imports = [
     inputs.home-manager.nixosModules.default
@@ -39,10 +39,10 @@
 
   # UEFI bootloader
   boot.loader.grub = {
-    enable = true;
-    device = "nodev";
-    efiSupport = true;
-    efiInstallAsRemovable = true;
+    enable = lib.mkDefault true;
+    device = lib.mkDefault "nodev";
+    efiSupport = lib.mkDefault true;
+    efiInstallAsRemovable = lib.mkDefault true;
   };
 
   # Open SSH
@@ -50,6 +50,9 @@
     enable = true;
     settings.PermitRootLogin = "prohibit-password";
   };
+
+  # Tailscale
+  services.tailscale.enable = true;
 
   # NixOS version
   system.stateVersion = "26.05";
