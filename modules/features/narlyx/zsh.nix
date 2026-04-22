@@ -55,7 +55,7 @@
       # Alias
       shellAliases = {
         "reload" = "source ~/.zshrc";
-        "rebuild" = "sudo nixos-rebuild switch --flake ~/Configuration";
+        "rebuild" = "nixos-rebuild switch --flake ~/Configuration";
         "cls" = "clear";
         "rm" = "${pkgs.rmtrash}/bin/rmtrash";
         "rmdir" = "${pkgs.rmtrash}/bin/rmdirtrash";

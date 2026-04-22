@@ -21,6 +21,15 @@
   # Unfree pakages
   nixpkgs.config.allowUnfree = true;
 
+  # Trusted users
+  nix.settings.trusted-users = [ "root" "narlyx" ];
+
+  # Experimental features
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
   # Locale
   time.timeZone = "America/Boise";
   i18n.defaultLocale = "en_US.UTF-8";
