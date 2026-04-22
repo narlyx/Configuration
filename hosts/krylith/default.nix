@@ -7,7 +7,7 @@
   ];
 
   # NAS
-  fileSYstems."/mnt/data" = {
+  fileSystems."/mnt/data" = {
     device = "192.168.0.159:/data";
     fsType = "nfs";
     neededForBoot = false;
