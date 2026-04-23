@@ -113,6 +113,16 @@ in {
 					proto = "udp";
 					sourcePort = 7777;
 				}
+				{
+					destination = "${krylith-ip}:7878";
+					proto = "tcp";
+					sourcePort = 7878;
+				}
+				{
+					destination = "${krylith-ip}:7878";
+					proto = "udp";
+					sourcePort = 7878;
+				}
 			];
 		};
 		nftables = {

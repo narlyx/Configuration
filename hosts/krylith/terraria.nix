@@ -1,9 +1,10 @@
 {
   virtualisation.oci-containers.containers.terraria = {
-    image = "passivelemon/terraria-docker:tmodloader-latest";
-    ports = [ "7777:7777" ];
-    volumes = [ "/mnt/data/appdata/terraria:/opt/terraria/config" ];
-    environment.WORLDNAME = "World";
-    environment.MODPACK = "Balls";
+    image = "ryshe/terraria:latest";
+    ports = [ "7777:7777" "7878:7878" ];
+    volumes = [ "/mnt/data/appdata/terraria:/root/.local/share/Terraria/Worlds" ];
+    environment = {
+      WORLD_FILENAME = "Loot_Lake.wld";
+    };
   };
 }
