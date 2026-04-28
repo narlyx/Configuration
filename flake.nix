@@ -15,6 +15,9 @@
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    # Packages
+    jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
+
   };
 
   # Flake outputs
