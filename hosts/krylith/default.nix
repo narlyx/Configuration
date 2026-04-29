@@ -3,9 +3,11 @@
   imports = [
     ./hardware-configuration.nix
     modules.roles.server
+
     ./terraria.nix
     ./nextcloud.nix
-  ];
+    ./minecraft.nix
+ ];
 
   # NAS
   fileSystems."/mnt/data" = {
