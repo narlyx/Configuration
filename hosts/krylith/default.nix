@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     modules.roles.server
     ./terraria.nix
+    ./nextcloud.nix
   ];
 
   # NAS

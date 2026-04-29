@@ -10,4 +10,5 @@ let
 in {
   "narlyx-ssh.age".publicKeys = [ narlyx-user juno-host acetylene-host ];
   "narlyx-password.age".publicKeys = [ narlyx-user juno-host acetylene-host ];
+  "nextcloud-admin-pass.age".publicKeys = [ narlyx-user krylith-server ];
 }
