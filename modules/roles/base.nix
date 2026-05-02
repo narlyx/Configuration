@@ -38,11 +38,13 @@
   networking.networkmanager.enable = true;
 
   # UEFI bootloader
+  boot.loader.timeout = lib.mkDefault 0;
   boot.loader.grub = {
     enable = lib.mkDefault true;
     device = lib.mkDefault "nodev";
     efiSupport = lib.mkDefault true;
     efiInstallAsRemovable = lib.mkDefault true;
+    timeoutStyle = lib.mkDefault "hidden";
   };
 
   # Open SSH
