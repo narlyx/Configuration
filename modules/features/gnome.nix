@@ -2,6 +2,7 @@
 
   imports = [
     modules.features.narlyx.gnome
+    modules.features.appimage
   ];
 
   # Enable gnome
@@ -61,7 +62,6 @@
     seahorse
     papers
     snapshot
-    gnome-calculator
     gnome-clocks
     gnome-calendar
     gnome-contacts
@@ -74,6 +74,7 @@
     gnome-terminal
     gnome-text-editor
     gnome-connections
+    # gnome-calculator
     # daobab
     # decibels
     # eog

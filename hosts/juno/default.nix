@@ -10,6 +10,8 @@
   home-manager.users.narlyx.home.packages = with pkgs; [
     zellij
     gimp
+    inkscape
+    strawberry
   ];
 
 }

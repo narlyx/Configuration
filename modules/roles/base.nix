@@ -16,6 +16,7 @@
     inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
     pkgs.git
     pkgs.tree
+    pkgs.progress
   ];
 
   # Unfree pakages

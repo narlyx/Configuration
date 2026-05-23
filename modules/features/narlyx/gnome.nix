@@ -11,6 +11,7 @@
       onlyoffice-desktopeditors
       thunderbird
       joplin-desktop
+      xournalpp
       nextcloud-client
       gradia
       bitwarden-desktop
