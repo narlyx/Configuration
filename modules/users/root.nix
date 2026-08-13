@@ -1,6 +1,6 @@
 { modules, config, ... }: {
 
-  # Home manager
+  ### HOME ENV ###
   home-manager.users.root = {
     home = {
       username = "root";

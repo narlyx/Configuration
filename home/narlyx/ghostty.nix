@@ -1,5 +1,5 @@
 {
-  home-manager.users.narlyx.programs.ghostty = {
+  programs.ghostty = {
     enable = true;
     settings = {
       theme = "Catppuccin Frappe";

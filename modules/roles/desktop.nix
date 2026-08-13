@@ -1,9 +1,8 @@
-{ modules, ... }: {
+{ nixModules, pkgs, ... }: {
 
   imports = [
-    modules.roles.base
-    modules.users.narlyx
-    modules.features.gnome
+    nixModules.users.narlyx
+    nixModules.features.pantheon
   ];
 
 }

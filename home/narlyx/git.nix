@@ -1,5 +1,5 @@
 {
-  home-manager.users.narlyx.programs.git = {
+  programs.git = {
     enable = true;
     settings = {
       user = {

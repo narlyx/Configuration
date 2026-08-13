@@ -1,62 +1,81 @@
 {
 
-  # Flake inputs
+  ### FLAKE INPUTS ###
   inputs = {
 
-    # Package repositories
+    # Nix repo
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-flatpak.url = "github:NixOS/nixpkgs/51effaf9783e0226281ad10e95a4af6c8a145316";
 
-    # Utilities
+    # Hardware support
+    nixos-hardware.url = "github:nixos/nixos-hardware";
+
+    # Flake utilities
     haumea.url = "github:nix-community/haumea";
     agenix.url = "github:ryantm/agenix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    # Packages
-    jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
+    # Apps
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    helium = {
+      url = "github:AlvaroParker/helium-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
   };
 
-  # Flake outputs
+  ### FLAKE OUTPUTS ###
   outputs = inputs@{ self, nixpkgs, haumea, ... }: let
-
-    # Create modules tree
-    modules = haumea.lib.load {
+   
+    # Nix modules
+    nixModules = haumea.lib.load {
       src = ./modules;
       loader = haumea.lib.loaders.path;
     };
 
-    # Create hosts tree
-    hosts = haumea.lib.load {
-      src = ./hosts;
+    # Home modules
+    homeModules = haumea.lib.load {
+      src = ./home;
       loader = haumea.lib.loaders.path;
     };
 
-    # Function to create a new host based on host name
-    mkHost = name: nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs modules; };
+    # Dynamically create new hosts via host name 
+    mkHost = hostName: nixpkgs.lib.nixosSystem {
+      
+      # Passing vars
+      specialArgs = { inherit inputs nixModules homeModules; };
+
+      # Additional config
       modules = [
 
-        # Predefined hostname
-        { networking.hostName = name; }
-
-        # Host configuration files
-        ./hosts/${name}/default.nix
+        # Define hostname
+        { networking.hostName = hostName; }
 
         # Universal configuration
-        modules.roles.base
+        nixModules.all-hosts
+
+        # Configuration file
+        ./hosts/${hostName}/configuration.nix
 
       ];
     };
 
   in {
 
-    # Automatically create NixOS hosts from hosts tree
-    nixosConfigurations = nixpkgs.lib.mapAttrs (name: _type: mkHost name) hosts;
+    # Automatically create NixOS hosts from ./hosts
+    nixosConfigurations = nixpkgs.lib.mapAttrs (hostName: _type: mkHost hostName) (haumea.lib.load {
+      src = ./hosts;
+      loader = haumea.lib.loaders.path;
+    });
 
   };
 
 }
+
+

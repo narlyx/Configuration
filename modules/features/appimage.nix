@@ -3,11 +3,9 @@
   programs.appimage.binfmt = true;
   programs.appimage.package = pkgs.appimage-run.override {
     extraPkgs = pkgs: [
-      pkgs.icu
-      pkgs.libxcrypt-legacy
-      pkgs.python312
-      pkgs.python312Packages.torch
       pkgs.webkitgtk_4_1
+      pkgs.zstd
+      pkgs.ffmpeg
     ]; 
   };
 }

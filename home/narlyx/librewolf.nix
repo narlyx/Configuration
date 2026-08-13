@@ -1,5 +1,5 @@
 {
-  home-manager.users.narlyx.programs.librewolf = {
+  programs.librewolf = {
     enable = true;
     policies.DefaultDownloadDirectory = "\${home}/Downloads";
     settings = {

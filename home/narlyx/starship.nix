@@ -1,5 +1,5 @@
 { lib, ... }: {
-  home-manager.users.narlyx.programs.starship = {
+  programs.starship = {
 
     enable = true;
     enableZshIntegration = true;
