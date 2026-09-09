@@ -20,31 +20,35 @@
     NIXOS_OZONE_WL = "1";
   };
 
-  hardware.opentabletdriver.enable = true;
-  hardware.uinput.enable = true;
-  boot.kernelModules = [ "uinput" "i915" ];
+  hardware.opentabletdriver.enable = true; hardware.uinput.enable = true;
+  boot.kernelModules = [ "uinput" "uinput" "i915" "i2c-dev"];
   boot.kernelParams = [ "i915.enable_psr=0" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   services.upower.enable = true;
   hardware.enableRedistributableFirmware = true;
 
-  environment.systemPackages = with pkgs; [
-    i2c-tools
-  ];
-
   systemd.services.tas2781 = {
     description = "Configure TAS2781 speaker amplifiers";
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = [ "multi-user.target" "sleep.target" ];
     after = [
       "systemd-modules-load.service"
       "sound.target"
+      "multi-user.target"
+      "suspend.target"
+      "hibernate.target"
+      "hybrid-sleep.target"
+      "suspend-then-hibernate.target"
     ];
+    path = [ pkgs.i2c-tools pkgs.coreutils pkgs.kmod ];
     serviceConfig = {
       Type = "oneshot";
       User = "root";
       ExecStart = "${pkgs.bash}/bin/bash ${./sound-fix.sh}";
+      Restart = "on-failure";
+      RestartSec = "2s";
     };
   };
+
 
   system.stateVersion = "25.11";
 
