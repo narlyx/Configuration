@@ -28,6 +28,24 @@
   services.upower.enable = true;
   hardware.enableRedistributableFirmware = true;
 
+  environment.systemPackages = with pkgs; [
+    i2c-tools
+  ];
+
+  systemd.services.tas2781 = {
+    description = "Configure TAS2781 speaker amplifiers";
+    wantedBy = [ "multi-user.target" ];
+    after = [
+      "systemd-modules-load.service"
+      "sound.target"
+    ];
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+      ExecStart = "${pkgs.bash}/bin/bash ${./sound-fix.sh}";
+    };
+  };
+
   system.stateVersion = "25.11";
 
 }
