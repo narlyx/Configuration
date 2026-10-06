@@ -10,6 +10,7 @@
 
     nixModules.roles.desktop
     nixModules.features.flatpak
+    nixModules.features.virtualisation
   ];
 
   environment.sessionVariables = {

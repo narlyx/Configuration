@@ -8,6 +8,10 @@
     homeModules.narlyx.emacs
   ];
 
+  home-manager.users.narlyx.home.packages = with pkgs; [
+    zellij
+  ];
+
   ### SHELL ###
   programs.zsh.enable = true;
   users.users.narlyx.shell = pkgs.zsh;

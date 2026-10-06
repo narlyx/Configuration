@@ -22,6 +22,7 @@
     rawtherapee
     shotwell
     gnucash
+    prusa-slicer
 
     mat2
 

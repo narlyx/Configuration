@@ -2,7 +2,7 @@
   virtualisation.virtualbox.host = {
     enable = true;
     # enableHardening = false;
-    # enableExtensionPack = true;
+    enableExtensionPack = true;
   };
 
   # programs.virt-manager.enable = true;

@@ -1,8 +1,5 @@
 { nixModules, homeModules, pkgs, ... }: {
 
-  imports = [
-    nixModules.features.appimage
-  ];
   home-manager.users.narlyx.imports = [ homeModules.narlyx.pantheon ];
 
   services.xserver.enable = true;
