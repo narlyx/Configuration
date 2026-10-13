@@ -9,9 +9,10 @@
     "${inputs.nixos-hardware}/asus/battery.nix"
 
     nixModules.roles.desktop
-    nixModules.features.flatpak
     nixModules.features.virtualisation
   ];
+
+  services.tailscale.enable = true;
 
   environment.sessionVariables = {
     QT_SCALE_FACTOR = "1";

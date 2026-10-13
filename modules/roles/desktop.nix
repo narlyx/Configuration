@@ -2,9 +2,9 @@
 
   imports = [
     nixModules.users.narlyx
-    nixModules.features.pantheon
-    nixModules.features.printing
+    nixModules.features.kde
     nixModules.features.appimage
+    nixModules.features.flatpak
   ];
 
 }
