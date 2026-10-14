@@ -19,6 +19,7 @@
     timeout = 0;
     efi.canTouchEfiVariables = true;
   };
+  boot.loader.grub.enable = false;
 
   ### NIX ###
   nix.settings.experimental-features = [

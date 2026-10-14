@@ -3,8 +3,8 @@
     enable = true;
     policies.DefaultDownloadDirectory = "\${home}/Downloads";
     settings = {
-      "identity.fxaccounts.enabled" = true;
       "privacy.resistFingerprinting" = false;
+      "browser.tabs.inTitlebar" = 0;
       "toolkit.theme" = "system";
     };
   };

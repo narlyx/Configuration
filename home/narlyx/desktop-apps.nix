@@ -1,13 +1,15 @@
 { inputs, homeModules, pkgs, ... }: {
 
   imports = [
+
     homeModules.narlyx.ghostty
+    homeModules.narlyx.librewolf
+
   ];
 
   home.packages = with pkgs; [
 
-    # librewolf
-    inputs.helium.packages.${pkgs.system}.default
+    # inputs.helium.packages.${pkgs.system}.default
     libreoffice
     gimp
     glabels-qt
@@ -23,9 +25,7 @@
     shotwell
     gnucash
     prusa-slicer
-
     mat2
-
     spotify
     discord
 
