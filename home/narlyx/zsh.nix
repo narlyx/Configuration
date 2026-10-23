@@ -52,7 +52,7 @@
       "cls" = "clear";
       "rm" = "${pkgs.rmtrash}/bin/rmtrash";
       "rmdir" = "${pkgs.rmtrash}/bin/rmdirtrash";
-      "rd" = "rmdir";
+      "rmd" = "rmdir";
       "l" = "${pkgs.eza}/bin/eza  -lah --icons --git";
       "ls" = "${pkgs.eza}/bin/eza --oneline --icons --git";
       "ll" = "${pkgs.eza}/bin/eza --oneline -ah --icons --git";
