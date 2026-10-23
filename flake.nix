@@ -46,7 +46,7 @@
     };
 
     # Dynamically create new hosts via host name 
-    mkHost = hostName: nixpkgs.lib.nixosSystem {
+    mkHost = hostName: hostModules: nixpkgs.lib.nixosSystem {
       
       # Passing vars
       specialArgs = { inherit inputs nixModules homeModules; };
@@ -61,18 +61,23 @@
         nixModules.all-hosts
 
         # Configuration file
-        ./hosts/${hostName}/configuration.nix
+        hostModules.configuration
 
       ];
     };
 
   in {
 
-    # Automatically create NixOS hosts from ./hosts
-    nixosConfigurations = nixpkgs.lib.mapAttrs (hostName: _type: mkHost hostName) (haumea.lib.load {
-      src = ./hosts;
-      loader = haumea.lib.loaders.path;
-    });
+    # Automatically create NixOS hosts from ./hosts/serveres & ./hosts/personal
+    nixosConfigurations = let
+      loadHosts = src:
+        haumea.lib.load {
+          inherit src;
+          loader = haumea.lib.loaders.path;
+        };
+    in nixpkgs.lib.mapAttrs
+      (hostName: hostModules: mkHost hostName hostModules)
+      ((loadHosts ./hosts/servers) // (loadHosts ./hosts/personal));
 
   };
 
