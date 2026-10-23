@@ -6,7 +6,6 @@
     inputs.agenix.nixosModules.default
     nixModules.features.vim
     nixModules.users.root
-    homeModules.all-users
     nixModules.features.nh
   ];
 
@@ -26,6 +25,17 @@
     "nix-command"
     "flakes"
   ];
+
+  ### HOME ###
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = {
+      inputs = inputs;
+      homeModules = homeModules;
+    };
+    backupFileExtension = "bak";
+  };
 
   ### NETWORK ###
   networking.networkmanager.enable = true;

@@ -2,13 +2,10 @@
 
   imports = [
     ./hardware-configuration.nix
-
     "${inputs.nixos-hardware}/common/cpu/intel/lunar-lake"
     "${inputs.nixos-hardware}/common/pc/laptop"
     "${inputs.nixos-hardware}/common/pc/ssd"
     "${inputs.nixos-hardware}/asus/battery.nix"
-
-    nixModules.roles.desktop
     nixModules.features.virtualisation
   ];
 

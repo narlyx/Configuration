@@ -33,51 +33,67 @@
   ### FLAKE OUTPUTS ###
   outputs = inputs@{ self, nixpkgs, haumea, ... }: let
    
-    # Nix modules
+    # Loads nix modules
     nixModules = haumea.lib.load {
       src = ./modules;
       loader = haumea.lib.loaders.path;
     };
 
-    # Home modules
+    # Loads home modules
     homeModules = haumea.lib.load {
       src = ./home;
       loader = haumea.lib.loaders.path;
     };
 
-    # Dynamically create new hosts via host name 
-    mkHost = hostName: hostModules: nixpkgs.lib.nixosSystem {
-      
-      # Passing vars
-      specialArgs = { inherit inputs nixModules homeModules; };
-
-      # Additional config
-      modules = [
-
-        # Define hostname
-        { networking.hostName = hostName; }
-
-        # Universal configuration
-        nixModules.all-hosts
-
-        # Configuration file
-        hostModules.configuration
-
-      ];
-    };
 
   in {
 
     # Automatically create NixOS hosts from ./hosts/serveres & ./hosts/personal
     nixosConfigurations = let
-      loadHosts = src:
-        haumea.lib.load {
-          inherit src;
-          loader = haumea.lib.loaders.path;
-        };
-    in nixpkgs.lib.mapAttrs
-      (hostName: hostModules: mkHost hostName hostModules)
-      ((loadHosts ./hosts/servers) // (loadHosts ./hosts/personal));
+
+      # Function to pull all host files
+      loadHosts = src: haumea.lib.load {
+        inherit src;
+        loader = haumea.lib.loaders.path;
+      };
+
+      # Function to dynamically create new hosts via host name 
+      mkHost = hostName: hostModules: hostRole: nixpkgs.lib.nixosSystem {
+
+        # Passing vars
+        specialArgs = { inherit inputs nixModules homeModules; };
+
+        # Additional config
+        modules = [
+
+          # Define hostname
+          { networking.hostName = hostName; }
+
+          # Universal configuration
+          nixModules.roles.base
+          hostRole
+
+          # Configuration file
+          hostModules.configuration
+
+        ];
+
+      };
+
+      # Pulls server hosts
+      serverHosts = nixpkgs.lib.mapAttrs
+        (hostName: hostModules:
+          mkHost hostName hostModules nixModules.roles.server)
+        (loadHosts ./hosts/servers);
+
+      # Pulls dekstop hosts
+      desktopHosts = nixpkgs.lib.mapAttrs
+        (hostName: hostModules:
+          mkHost hostName hostModules nixModules.roles.desktop)
+        (loadHosts ./hosts/desktops);
+
+    # Return server & desktop hosts
+    in serverHosts // desktopHosts;
 
   };
 
