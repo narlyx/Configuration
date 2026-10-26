@@ -12,7 +12,12 @@
     displayManager.plasma-login-manager.enable = true;
   };
 
-  environment.plasma6.excludePackages = with pkgs.kldePackages; [
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    konsole
+    kate
+    ktexteditor
+    khelpcenter
+    discover
   ];
 
 }
