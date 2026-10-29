@@ -12,13 +12,13 @@
   ### BOOTLOADER ###
   boot.loader = {
     systemd-boot = {
-      enable = true;
-      configurationLimit = 3;
+      enable = lib.mkDefault true;
+      configurationLimit = lib.mkDefault 3;
     };
-    timeout = 0;
-    efi.canTouchEfiVariables = true;
+    timeout = lib.mkDefault 0;
+    efi.canTouchEfiVariables = lib.mkDefault true;
   };
-  boot.loader.grub.enable = false;
+  boot.loader.grub.enable = lib.mkDefault false;
 
   ### NIX ###
   nix.settings.experimental-features = [

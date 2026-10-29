@@ -196,6 +196,26 @@
         "type": "github"
       }
     },
+    "pocket-id-nixos": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792046196,
+        "narHash": "sha256-OTcoRRNPYFxJbuHoiuLPYg0gVbZjq/rYWIhxlLD8Zm0=",
+        "owner": "ogglord",
+        "repo": "pocket-id-nixos",
+        "rev": "27df7d517a87947830e0a9718d8b48282726fc49",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ogglord",
+        "repo": "pocket-id-nixos",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -203,7 +223,8 @@
         "home-manager": "home-manager_2",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
-        "nixpkgs-flatpak": "nixpkgs-flatpak"
+        "nixpkgs-flatpak": "nixpkgs-flatpak",
+        "pocket-id-nixos": "pocket-id-nixos"
       }
     },
     "systems": {

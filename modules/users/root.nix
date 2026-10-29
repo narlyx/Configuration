@@ -1,4 +1,4 @@
-{ modules, config, ... }: {
+{ config, ... }: {
 
   ### HOME ENV ###
   home-manager.users.root = {

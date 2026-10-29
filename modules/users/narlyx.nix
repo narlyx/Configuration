@@ -35,5 +35,8 @@
     stateVersion = config.system.stateVersion;
   };
 
+  ### KEYS ###
+  age.identityPaths = [ "/home/narlyx/.ssh/id_ed25519" ]; 
+
 }
 

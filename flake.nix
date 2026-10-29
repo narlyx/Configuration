@@ -19,6 +19,10 @@
     };
 
     # Apps
+    pocket-id-nixos = {
+      url = "github:ogglord/pocket-id-nixos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # noctalia = {
     #   url = "github:noctalia-dev/noctalia-shell";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -45,6 +49,23 @@
       loader = haumea.lib.loaders.path;
     };
 
+    secretFiles = let
+      secretDir = ./secrets;
+      entries = builtins.readDir secretDir;
+      ageFiles = nixpkgs.lib.filterAttrs
+        (name: type:
+          type == "regular"
+          && nixpkgs.lib.hasSuffix ".age" name
+        )
+        entries;
+    in
+      nixpkgs.lib.mapAttrs'
+        (filename: _:
+          nixpkgs.lib.nameValuePair
+            (nixpkgs.lib.removeSuffix ".age" filename)
+            (secretDir + "/${filename}")
+        )
+        ageFiles;
 
   in {
 
@@ -61,7 +82,7 @@
       mkHost = hostName: hostModules: hostRole: nixpkgs.lib.nixosSystem {
 
         # Passing vars
-        specialArgs = { inherit inputs nixModules homeModules; };
+        specialArgs = { inherit inputs nixModules homeModules secretFiles; };
 
         # Additional config
         modules = [
