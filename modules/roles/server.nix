@@ -27,7 +27,7 @@
       };
 
       hypervisor = {
-        ip = "100.64.0.6";
+        ip = "100.64.0.5";
         hostname = "athena.${tailnet}";
       };
 
