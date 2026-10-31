@@ -17,7 +17,7 @@
       };
 
       media = {
-        ip = "";
+        ip = "100.64.0.2";
         hostname = "apollo.${tailnet}";
       };
 
