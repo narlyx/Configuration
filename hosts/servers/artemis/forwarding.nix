@@ -13,42 +13,42 @@
 			internalInterfaces = [ "tailscale0" ];
 			forwardPorts = [
 				{
-					destination = "${servers.achilles.ip}:25565";
+					destination = "${servers.services.ip}:25565";
 					proto = "tcp";
 					sourcePort = 25565;
 				}
 				{
-					destination = "${servers.achilles.ip}:25565";
+					destination = "${servers.services.ip}:25565";
 					proto = "udp";
 					sourcePort = 25565;
 				}
 				{
-					destination = "${servers.achilles.ip}:19132";
+					destination = "${servers.services.ip}:19132";
 					proto = "tcp";
 					sourcePort = 19132;
 				}
 				{
-					destination = "${servers.achilles.ip}:19132";
+					destination = "${servers.services.ip}:19132";
 					proto = "udp";
 					sourcePort = 19132;
 				}
 				{
-					destination = "${servers.achilles.ip}:7777";
+					destination = "${servers.services.ip}:7777";
 					proto = "tcp";
 					sourcePort = 7777;
 				}
 				{
-					destination = "${servers.achilles.ip}:7777";
+					destination = "${servers.services.ip}:7777";
 					proto = "udp";
 					sourcePort = 7777;
 				}
 				{
-					destination = "${servers.achilles.ip}:7878";
+					destination = "${servers.services.ip}:7878";
 					proto = "tcp";
 					sourcePort = 7878;
 				}
 				{
-					destination = "${servers.achilles.ip}:7878";
+					destination = "${servers.services.ip}:7878";
 					proto = "udp";
 					sourcePort = 7878;
 				}

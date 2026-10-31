@@ -1,11 +1,12 @@
-{ modules, pkgs, ... }: {
+{ modules, pkgs, servers, ... }: {
 
   imports = [
 
     ./hardware-configuration.nix
-    ./terraria.nix
+    # ./terraria.nix
     # ./nextcloud.nix
-    ./minecraft.nix
+    # ./minecraft.nix
+    ./karakeep.nix
 
  ];
 

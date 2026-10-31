@@ -1,48 +1,8 @@
-{ lib, pkgs, ... }: let
-
-  domain = "narlyx.net";
-  tailnet = "narlyx.tailnet";
-
-in {
-
-  _module.args = {
-
-    inherit domain tailnet;
-
-    servers = {
-
-      achilles = {
-        ip = "100.64.0.12";
-        hostname = "achilles.${tailnet}";
-      };
-
-      apollo = {
-        ip = "";
-        hostname = "apollo.${tailnet}";
-      };
-
-      artemis = {
-        ip = "";
-        hostname = "artemis.${tailnet}";
-      };
-
-      athena = {
-        ip = "";
-        hostname = "athena.${tailnet}";
-      };
-
-      hades = {
-        ip = "";
-        hostname = "hades.${tailnet}";
-      };
-
-    };
-
-  };
-
+{ lib, pkgs, ... }: {
+  
   imports = [
     ./hardware-configuration.nix
-    ./port-forwarding.nix 
+    ./forwarding.nix 
     ./mesh.nix
     ./proxy.nix
     ./auth.nix
