@@ -3,11 +3,13 @@
   imports = [
 
     ./hardware-configuration.nix
-    # ./terraria.nix
-    # ./nextcloud.nix
-    # ./minecraft.nix
+    ./nextcloud.nix
+    ./immich.nix
     ./karakeep.nix
+    ./paperless.nix
 
+    # ./terraria.nix
+    # ./minecraft.nix
  ];
 
   fileSystems."/mnt/data" = {

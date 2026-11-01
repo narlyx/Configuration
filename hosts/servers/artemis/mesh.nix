@@ -5,7 +5,7 @@
     port = 8080;
     settings = {
       noise.private_key_path = "/var/lib/headscale/noise_private.key";
-     server_url = "https://mesh.${domain}";
+      server_url = "https://tether.${domain}";
       tls_key_path = null;
       tls_cert_path = null;
       dns = {

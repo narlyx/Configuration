@@ -9,9 +9,9 @@
       DISABLE_NEW_RELEASE_CHECK = "true";
       DISABLE_PASSWORD_AUTH = "true";
       OAUTH_ALLOW_DANGEROUS_EMAIL_ACCOUNT_LINKING = "true";
-      OAUTH_WELLKNOWN_URL = "https://auth.${domain}/.well-known/openid-configuration";
+      OAUTH_WELLKNOWN_URL = "https://keyring.${domain}/.well-known/openid-configuration";
       OAUTH_PROVIDER_NAME = "Pocket ID";
-      NEXTAUTH_URL = "https://bookmark.${domain}";
+      NEXTAUTH_URL = "https://pocket.${domain}";
     };
   };
 }
