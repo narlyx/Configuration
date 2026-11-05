@@ -10,5 +10,6 @@ in {
   "pocket-id-key.age".publicKeys = [ user-narlyx server-artemis ];
   "pocket-id-api.age".publicKeys = [ user-narlyx server-artemis ];
   "karakeep-env.age".publicKeys = [ user-narlyx server-achilles ];
+  "paperless_env.age".publicKeys = [ user-narlyx server-achilles ];
 
 }

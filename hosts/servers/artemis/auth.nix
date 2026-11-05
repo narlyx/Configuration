@@ -7,7 +7,8 @@
 
   services.pocket-id = {
     enable = true;
-    settings.APP_URL = "https://auth.${domain}";
+    settings.APP_URL = "https://keyring.${domain}";
+    dataDir = "/mnt/data/pocket-id";
     credentials = {
       ENCRYPTION_KEY = config.age.secrets.pocket-id-key.path;
       STATIC_API_KEY = config.age.secrets.pocket-id-key.path;

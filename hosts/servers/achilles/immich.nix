@@ -5,6 +5,5 @@
     host = "0.0.0.0";
     openFirewall = true;
     mediaLocation = "/mnt/data/immich";
-    # TODO: Hardware acceleration
   };
 }

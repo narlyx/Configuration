@@ -6,7 +6,7 @@
         extraConfig = "reverse_proxy * http://localhost:8080";
       };
 
-      "https://auth.${domain}" = {
+      "https://keyring.${domain}" = {
         extraConfig = "reverse_proxy * http://localhost:1411";
       };
 
@@ -22,8 +22,13 @@
         extraConfig = "reverse_proxy * http://${servers.services.hostname}:80";
       };
 
-      # immich: gallary
-      # paperless: records
+      "https://gallery.${domain}" = {
+        extraConfig = "reverse_proxy * http://${servers.services.hostname}:2283";
+      };
+
+      "https://records.${domain}" = {
+        extraConfig = "reverse_proxy * http://${servers.services.hostname}:28981";
+      };
 
     };
   };
